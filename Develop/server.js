@@ -16,7 +16,6 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function(req, res) {
   fs.readFile(path.join(__dirname, "db/db.json"), "utf8",
   function(err, data) {
-    //console.log(data);
     return res.json(JSON.parse(data));
   })
 });
@@ -41,7 +40,6 @@ app.post("/api/notes", function(req, res) {
 
 app.delete("/api/notes/:id", function(req, res) {
   const chosenNote = req.params.id;
-  console.log(chosenNote);
   fs.readFile(path.join(__dirname, "db/db.json"), "utf8",
   function(err, data) {
     if (err) throw err;
@@ -59,7 +57,7 @@ app.delete("/api/notes/:id", function(req, res) {
   })
 });
 
-// Starts the server to begin listening
+
 app.listen(PORT, function () {
     console.log("App listening on: http://localhost:" + PORT);
 });
